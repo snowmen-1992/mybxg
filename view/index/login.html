@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学IT - 后台管理系统</title>
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
+    <link rel="stylesheet" href="/public/less/index.css">
+</head>
+<body>
+<!-- 登录 -->
+<div class="login">
+    <div class="login-wrap">
+        <div class="avatar">
+            <img src="./uploads/monkey.png" class="img-circle" alt="">
+        </div>
+        <form id="loginForm" action="" class="col-xs-offset-1 col-xs-10">
+            <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-user"></i>
+                    </span>
+                <input name="tc_name" type="text" class="form-control" placeholder="用户名">
+            </div>
+            <div class="input-group input-group-lg">
+                    <span class="input-group-addon">
+                        <i class="fa fa-key"></i>
+                    </span>
+                <input name="tc_pass" type="password" class="form-control" placeholder="密码">
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
+        </form>
+    </div>
+</div>
+
+<script src="/public/assets/jquery/jquery.min.js"></script>
+<script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
+<script>
+    //登录界面表单提交
+    $('#loginForm').submit(function () {
+        //首先按接口要求设置input 的name 属性：tc_name；tc_pass
+        //获取表单中input的数据
+        var formData = $(this).serialize();
+        //console.log(formData);//得到字符串格式数据
+        $.ajax({
+            type: 'post',
+            url: '/api/login',
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                //获取不到数据原因是因为没有开启反向代理，路径就会出现问题
+                //console.log(data);
+                if(data.code==200){
+                    //console.log(data);
+                    //获取具体的头像地址和名字
+                    console.log(data.result);
+                    //把获取到的头像地址和名字转化成json格式的数据
+                    var logInfo = JSON.stringify(data.result);
+                    //创建一个cookie并设置 cookie的有效路径：
+                    //$.cookie('the_cookie', 'the_value', { expires: 7, path: '/' });
+                    // 实现cookie数据的跨页面共享
+                    $.cookie('logInfo',logInfo,{path : '/'});
+                    //登陆成功跳转到主页
+                    location.href='/index/index';
+                }
+            },
+            error: function (data) {
+                console.log(data.responseText);
+            }
+        });
+
+        //阻止表单默认跳转事件
+        return false;
+    });
+</script>
+</body>
+</html>
