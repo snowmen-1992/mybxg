@@ -15,6 +15,9 @@
         if(count($arr) == 2){
             $path = $arr[0];
             $filename = $arr[1];
+        }else{
+        //当没有输过密码账户的时候，登录不到主页
+            $filename='login';
         }
     }else{
         // 表示登录页面
