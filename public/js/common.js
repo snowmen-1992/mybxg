@@ -8,7 +8,6 @@ define(['jquery','echarts','cookie'],function ($,echarts) {
 
     //1.没有登录的时候跳转到登录页面
     var pathname = location.pathname;
-    console.log(pathname);
     //没有登录的时候跳转到登录页面
     var flag = $.cookie('PHPSESSID');
     //indexOf如果不存在返回
@@ -64,6 +63,20 @@ define(['jquery','echarts','cookie'],function ($,echarts) {
     //设置登录人名字
     $('.aside>.profile>h4').html(obj.tc_name);
 
+
+    //5. 实现退出功能
+    $("#logoutId").click(function () {
+        $.ajax({
+            type :'post',
+            url:"/api/logout",
+            dataType:"json",
+            success:function (data) {
+                if(data.code==200){
+                    location.href='/login';
+                }
+            }
+        });
+    });
 
     
 })
