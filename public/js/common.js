@@ -1,6 +1,6 @@
 
 //有返回值的放到前边，无返回值的放到后边
-define(['jquery','echarts','cookie'],function ($,echarts) {
+define(['jquery','echarts','template','cookie'],function ($,echarts,template) {
     //控制菜单
     $('.navs ul').prev('a').on('click', function () {
         $(this).next().slideToggle();
@@ -56,12 +56,20 @@ define(['jquery','echarts','cookie'],function ($,echarts) {
     //3.登录成功后个人信息---cookie不需要返回值
     //cookie中所存的数据信息是字符串格式---因为登录页已经设置了cookie的内容，并且网页未关闭状态下，信息不回丢失
     //console.log($.cookie('logInfo'));
-    //cookie中所存的数据信息转化成json格式
-    var obj = JSON.parse($.cookie('logInfo'));
-    //设置头像图片
-    $('.aside>.profile>img').attr('src',obj.tc_avatar);
-    //设置登录人名字
-    $('.aside>.profile>h4').html(obj.tc_name);
+    var pathname=location.pathname;
+    //当在登录页的时候不需要做该项
+    if(pathname.indexOf('login')==-1){
+        //cookie中所存的数据信息转化成json格式
+        var obj = JSON.parse($.cookie('logInfo'));
+        // //设置头像图片
+        // $('.aside>.profile>img').attr('src',obj.tc_avatar);
+        // //设置登录人名字
+        // $('.aside>.profile>h4').html(obj.tc_name);
+        //使用模板引擎
+        var html=template('logInfo',obj);
+        $('.aside>.profile').html(html);
+    }
+
 
 
     //5. 实现退出功能
