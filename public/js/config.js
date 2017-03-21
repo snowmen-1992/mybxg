@@ -9,6 +9,7 @@ require.config({
         echarts:'assets/echarts/echarts.min',
         template:'assets/artTemplate/template',
         bootstrap:'assets/bootstrap/js/bootstrap',
+        util:'js/util',
         
     },
     shim:{

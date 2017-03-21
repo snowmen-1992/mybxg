@@ -1,7 +1,7 @@
-/**
- * Created by tom on 2017/3/20.
- */
-define(['echarts'],function (echarts) {
+
+define(['echarts','jquery','util'],function (echarts,$,util) {
+
+    util.setMenu(location.pathname);//为什么不好使
     //4.echarts引入---需要返回值的
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));

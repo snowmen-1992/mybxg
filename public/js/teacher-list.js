@@ -1,6 +1,8 @@
 /*讲师管理*/
 
-define(['jquery', 'template', 'bootstrap'], function ($, template) {
+define(['jquery', 'template', 'util','bootstrap'], function ($, template,util) {
+    //5.获取讲师列表页的地址location.pathname;
+    util.setMenu(location.pathname);
 
     //1.实现教师数据加载
     $.ajax({
