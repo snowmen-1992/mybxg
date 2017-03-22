@@ -69,8 +69,7 @@ define(['jquery','echarts','template','cookie'],function ($,echarts,template) {
         var html=template('logInfo',obj);
         $('.aside>.profile').html(html);
     }
-
-
+    
 
     //5. 实现退出功能
     $("#logoutId").click(function () {
@@ -85,6 +84,7 @@ define(['jquery','echarts','template','cookie'],function ($,echarts,template) {
             }
         });
     });
+    
 
     
 })

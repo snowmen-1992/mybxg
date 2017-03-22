@@ -10,6 +10,8 @@ require.config({
         template:'assets/artTemplate/template',
         bootstrap:'assets/bootstrap/js/bootstrap',
         util:'js/util',
+        overlay:'js/overlay',
+        nprogress:'assets/nprogress/nprogress',
         
     },
     shim:{

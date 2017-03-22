@@ -1,6 +1,6 @@
 /*讲师管理*/
 
-define(['jquery', 'template', 'util','bootstrap'], function ($, template,util) {
+define(['jquery', 'template', 'util', 'bootstrap', 'overlay'], function ($, template, util) {
     //5.获取讲师列表页的地址location.pathname;
     util.setMenu(location.pathname);
 
@@ -64,7 +64,7 @@ define(['jquery', 'template', 'util','bootstrap'], function ($, template,util) {
                             $(that).text('注销');
                         }
                         // 修改浏览器端状态--保证再次点击时状态更改
-                        td.attr('data-status',data.result.tc_status);
+                        td.attr('data-status', data.result.tc_status);
                     }
                 })
             });
