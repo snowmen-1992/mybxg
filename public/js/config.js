@@ -12,6 +12,12 @@ require.config({
         util:'js/util',
         overlay:'js/overlay',
         nprogress:'assets/nprogress/nprogress',
+        datepicker:'assets/bootstrap-datepicker/js/bootstrap-datepicker',
+        language:'assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        validate:'assets/validate/jquery-validate',
+        form:'assets/jquery-form/jquery.form',
+        ckeditor:'assets/ckeditor/ckeditor',
+        region:'assets/jquery-region/jquery-region',
         
     },
     shim:{
@@ -19,5 +25,16 @@ require.config({
             // 把bootstrap转成标准模块（依赖于标准的jQuery模块）
             deps : ['jquery']
         },
+        language:{
+            
+            deps : ['jquery','datepicker']
+        },
+        validate:{
+            deps : ['jquery']
+        },
+        ckeditor : {
+            exports : 'CKEDITOR',
+            deps : ['jquery']
+        }
     }
 });
