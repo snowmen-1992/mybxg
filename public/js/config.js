@@ -17,7 +17,8 @@ require.config({
         validate:'assets/validate/jquery-validate',
         form:'assets/jquery-form/jquery.form',
         ckeditor:'assets/ckeditor/ckeditor',
-        region:'assets/jquery-region/jquery-region',
+        region:'assets/jquery-region/jquery.region',
+        uploadify:'assets/uploadify/jquery.uploadify'
         
     },
     shim:{
@@ -34,6 +35,9 @@ require.config({
         },
         ckeditor : {
             exports : 'CKEDITOR',
+            deps : ['jquery']
+        },
+        uploadify: {
             deps : ['jquery']
         }
     }
